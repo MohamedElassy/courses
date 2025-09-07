@@ -1,0 +1,110 @@
+{
+  "i18n": {
+    "terms": {
+      "international_students_label_ar": "الطلاب الوافدين",
+      "international_students_label_en": "International Students"
+    }
+  },
+  "sections": [
+    {
+      "id": "international_students",
+      "type": "info-cards",
+      "title_ar": "الطلاب الوافدين",
+      "title_en": "International Students",
+      "cards": [
+        "why_choose_raya",
+        "eligibility",
+        "entry_requirements",
+        "english_language",
+        "visa_immigration",
+        "scholarships_funding",
+        "fees_and_cost_of_living",
+        "accommodation",
+        "student_support",
+        "pre_arrival",
+        "arrival_orientation",
+        "life_in_city",
+        "faqs",
+        "contact_team"
+      ],
+      "stepper": [
+        "create_account",
+        "upload_docs",
+        "offer_and_cas_like_letter",
+        "visa_steps",
+        "housing_booking",
+        "tuition_payment",
+        "final_acceptance"
+      ],
+      "widgets": {
+        "cost_of_living_calculator": true,
+        "english_level_checker": true,
+        "document_checklist_generator": true
+      },
+      "autofill": [
+        "legacy:student_affairs_pages",
+        "legacy:admissions"
+      ],
+      "benchmarks": {
+        "source": "northumbria",
+        "pillars": [
+          "clear_entry_requirements",
+          "english_language_requirements",
+          "immigration_hub",
+          "scholarships_and_funding",
+          "accommodation_flow",
+          "pre_arrival_and_orientation",
+          "ongoing_international_support"
+        ],
+        "notes": "اقتدِ بالهيكل وتدفق المعلومات وتجربة المستخدم دون نسخ نصوص حرفية."
+      },
+      "disclaimers": {
+        "structure_only": "نقتدي ببناء الصفحات والأقسام ومسارات الاستخدام كأفضل ممارسة، مع كتابة محتوى أصيل خاص بالمعهد."
+      }
+    }
+  ],
+  "content_sources": {
+    "crawl": true,
+    "allowed_domains": [
+      "https://raya.edu.eg",
+      "https://gatestudent.rayaedu.org/",
+      "https://www.northumbria.ac.uk"
+    ],
+    "priority_urls": [
+      "https://raya.edu.eg/",
+      "https://raya.edu.eg/student-portal/",
+      "https://raya.edu.eg/quality-management-unit/",
+      "https://raya.edu.eg/category/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/",
+      "https://www.northumbria.ac.uk/international/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/admissions/english-language-requirements/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/immigration/student-route-visas/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/support-for-students/international-student-support/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/fees-funding/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/fees-funding/international-fees-funding/international-masters-funding/",
+      "https://www.northumbria.ac.uk/study-at-northumbria/accommodation/"
+    ],
+    "mapping": {
+      "international_benchmark_structure": [
+        "northumbria:international_home",
+        "northumbria:english_language_requirements",
+        "northumbria:immigration_hub",
+        "northumbria:scholarships_funding",
+        "northumbria:accommodation",
+        "northumbria:international_student_support"
+      ]
+    },
+    "extraction_rules": [
+      "استخدم صفحات Northumbria كمرجع بنيوي لتقسيم المحتوى وتدفق المستخدم فقط.",
+      "امنع النسخ الحرفي؛ اكتب نصًا أصيلًا خاصًا بمعهد راية مع مرآة إنجليزية موجزة.",
+      "احتفِظ بالمصطلحات العربية الرسمية مثل: الطلاب الوافدين، وإرفاق ترجمة إنجليزية واضحة."
+    ]
+  },
+  "smart_ui": {
+    "components_append": [
+      "international_hub_hero_with_ctas",
+      "sticky_apply_and_contact_strip",
+      "stepper_with_progress",
+      "FAQ_accordion_multi_section"
+    ]
+  }
+}
