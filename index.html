@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>د. محمد العيسي | استشارات التجارة الدولية والتدريب</title>
+  <meta name="description" content="موقع د. محمد العيسي: استشارات التجارة الدولية، التخليص الجمركي، النقل الدولي، ومنصة دورات احترافية بخيارات دفع Stripe وPayPal وInstaPay." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="د. محمد العيسي | استشارات التجارة الدولية والتدريب" />
+  <meta property="og:description" content="حوّل تحديات التجارة الدولية إلى نمو حقيقي عبر استشارات مهنية ودورات متخصصة." />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23090f2f'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' font-size='54' font-family='Arial' text-anchor='middle'%3EDr. Mohamed Elassy%3C/text%3E%3C/svg%3E" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #080d25;
+      --bg-2: #0e1537;
+      --text: #e7ebff;
+      --muted: #b6bedf;
+      --card: rgba(19, 27, 63, 0.62);
+      --line: rgba(136, 154, 214, 0.28);
+      --accent: #24d4ff;
+      --accent-2: #8f4cff;
+      --accent-3: #ff31b9;
+      --gold: #f3c969;
+      --ok: #46d77a;
+      --danger: #ff5f7d;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --font-ar: 'Cairo', sans-serif;
+      --font-en: 'Inter', sans-serif;
+    }
+    [data-accent='blue']{--accent:#24d4ff;--accent-2:#8f4cff;--accent-3:#ff31b9;}
+    [data-accent='purple']{--accent:#b77bff;--accent-2:#6d4bff;--accent-3:#24d4ff;}
+    [data-accent='gold']{--accent:#f3c969;--accent-2:#ff9d00;--accent-3:#ff31b9;}
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 10% 10%, rgba(143,76,255,.22), transparent 40%), radial-gradient(circle at 90% 20%, rgba(36,212,255,.16), transparent 35%), linear-gradient(135deg, var(--bg), var(--bg-2));
+      color: var(--text);
+      font-family: var(--font-ar);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .06;
+      background-image: radial-gradient(#ffffff 0.7px, transparent 0.7px);
+      background-size: 3px 3px;
+      z-index: -1;
+    }
+    body[data-lang='en'] { font-family: var(--font-en); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1180px, 92%); margin: auto; }
+    .section { padding: 90px 0; }
+    .grid { display: grid; gap: 1rem; }
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: .78rem 1.25rem;
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: .25s;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    .btn.secondary { background: rgba(255,255,255,.1); border-color: var(--line); }
+    .btn:hover { transform: translateY(-2px); }
+    .chip { padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.05); cursor:pointer; }
+    .chip.active { background: linear-gradient(120deg, rgba(36,212,255,.2), rgba(143,76,255,.25)); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      transition: .3s;
+      padding: .8rem 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+    }
+    .topnav.scrolled { background: rgba(7,11,30,.9); border-color: var(--line); backdrop-filter: blur(8px); }
+    .nav-inner { display:flex; justify-content:space-between; align-items:center; gap: 1rem; }
+    .brand { font-weight: 800; font-size: 1.1rem; letter-spacing:.2px; }
+    .nav-links { display:flex; gap:.85rem; flex-wrap:wrap; align-items:center; }
+    .nav-links a { font-size:.92rem; color:var(--muted); }
+    .nav-ctas { display:flex; gap:.6rem; align-items:center; flex-wrap: wrap; }
+    .lang-toggle { min-width: 52px; text-align:center; }
+
+    .hero { min-height: 92vh; display:grid; place-items:center; position:relative; }
+    .hero-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: 1.2rem; align-items:center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.7rem); line-height:1.15; margin:.1rem 0 1rem; }
+    .hero p { color: var(--muted); max-width: 60ch; }
+    .hero-card { padding: 1.2rem; }
+    .avatar {
+      width: min(420px, 92%);
+      margin-inline: auto;
+      aspect-ratio: 4/5;
+      border-radius: 26px;
+      background: linear-gradient(150deg, rgba(36,212,255,.32), rgba(143,76,255,.36), rgba(255,49,185,.24));
+      padding: 12px;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+    .avatar .inner {
+      height:100%; border-radius: 20px;
+      background: linear-gradient(165deg, #17224f, #111936);
+      display:grid; place-items:center;
+      border:1px solid var(--line);
+      text-align:center;
+      padding:1rem;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    .stats { grid-template-columns: repeat(3, 1fr); margin-top: 1rem; }
+    .stat { padding: .85rem; text-align:center; }
+    .stat b { font-size: 1.4rem; color: var(--gold); display:block; }
+
+    .title { font-size: clamp(1.5rem, 2.5vw, 2.2rem); margin:0 0 .55rem; }
+    .subtitle { color: var(--muted); max-width: 70ch; margin-bottom:1.3rem; }
+
+    .about-grid { grid-template-columns: 1fr 1fr; }
+    .about-card { padding: 1rem; }
+    .list { margin:0; padding-inline-start: 1.1rem; }
+
+    .filters { display:flex; gap:.6rem; flex-wrap:wrap; margin: .9rem 0 1rem; }
+    .services-grid { grid-template-columns: repeat(3,1fr); }
+    .card { padding: 1rem; border-radius: var(--radius); border:1px solid var(--line); background: rgba(255,255,255,.02); }
+    .icon {
+      width:40px; height:40px; border-radius: 12px; display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(36,212,255,.2), rgba(143,76,255,.25)); margin-bottom:.6rem;
+    }
+
+    .courses-grid { grid-template-columns: repeat(3,1fr); }
+    .course-cover { aspect-ratio:16/10; border-radius: 12px; background: linear-gradient(140deg, #1e2f7a, #6216a8); margin-bottom:.65rem; }
+    .badge { font-size:.75rem; padding:.22rem .6rem; border:1px solid var(--line); border-radius: 999px; color:var(--muted); }
+
+    .search-row { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom: 1rem; }
+    .input, select, textarea {
+      width:100%; background: rgba(255,255,255,.06); border:1px solid var(--line); color:var(--text);
+      border-radius: 12px; padding: .65rem .8rem; font: inherit;
+    }
+
+    .posts-grid { grid-template-columns: repeat(3,1fr); }
+    .testimonial-wrap { position:relative; overflow:hidden; }
+    .testimonial-track { display:flex; transition: transform .35s ease; }
+    .testimonial { min-width: 100%; padding: 1rem; }
+
+    .faq-item + .faq-item { margin-top: .6rem; }
+    .faq-q { width:100%; text-align:start; background: rgba(255,255,255,.03); color:var(--text); border:1px solid var(--line); border-radius: 12px; padding:.8rem; cursor:pointer; }
+    .faq-a { max-height: 0; overflow: hidden; transition:max-height .3s ease; color:var(--muted); padding:0 .7rem; }
+
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+
+    footer { border-top:1px solid var(--line); padding: 2rem 0; color: var(--muted); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,4,14,.7);
+      display:none;
+      place-items:center;
+      z-index: 120;
+      padding:1rem;
+    }
+    .modal.open { display:grid; }
+    .modal-card {
+      width:min(980px, 96vw);
+      max-height: 92vh;
+      overflow:auto;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: #0b1335;
+      padding:1rem;
+    }
+    .close-btn { float:inline-end; background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer; }
+
+    .admin-panel { margin-top: 1rem; padding: .9rem; }
+    .admin-panel details { border:1px solid var(--line); border-radius: 12px; padding:.8rem; }
+    .lesson-item { padding:.55rem; border:1px solid var(--line); border-radius:10px; margin-bottom:.4rem; background:rgba(255,255,255,.04); cursor:grab; }
+
+    .seg { display:flex; gap:.5rem; margin: .65rem 0; flex-wrap: wrap; }
+    .seg button { background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--text); padding:.45rem .7rem; border-radius:999px; cursor:pointer; }
+    .seg button.active { background: linear-gradient(120deg, rgba(36,212,255,.2), rgba(143,76,255,.3)); }
+
+    .reveal { opacity:0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.show { opacity:1; transform:none; }
+
+    @media (max-width: 980px){
+      .hero-grid,.about-grid,.contact-grid { grid-template-columns: 1fr; }
+      .services-grid,.courses-grid,.posts-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display:none; }
+    }
+    @media (max-width: 680px){
+      .services-grid,.courses-grid,.posts-grid,.stats { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+    }
+  </style>
+</head>
+<body data-lang="ar" data-accent="blue">
+  <header class="topnav" id="topNav">
+    <div class="container nav-inner">
+      <div class="brand" id="brandName">د. محمد العيسي</div>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation"></nav>
+      <div class="nav-ctas">
+        <button class="btn secondary lang-toggle" id="langToggle" aria-label="Toggle language">EN</button>
+        <select id="accentSwitch" class="input" style="width:auto" aria-label="Theme accent selector">
+          <option value="blue">Blue</option>
+          <option value="purple">Purple</option>
+          <option value="gold">Gold</option>
+        </select>
+        <a class="btn secondary" id="waBtn" href="#contact">WhatsApp</a>
+        <a class="btn primary" id="bookBtn" href="#contact"></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="badge" id="heroBadge"></span>
+          <h1 id="heroTitle"></h1>
+          <p id="heroSub"></p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0;">
+            <a href="#contact" class="btn primary" id="heroCta1"></a>
+            <a href="#courses" class="btn secondary" id="heroCta2"></a>
+          </div>
+          <div class="grid stats">
+            <div class="stat glass"><b data-counter="120">0</b><span id="stat1"></span></div>
+            <div class="stat glass"><b data-counter="18">0</b><span id="stat2"></span></div>
+            <div class="stat glass"><b data-counter="95">0</b><span id="stat3"></span></div>
+          </div>
+        </div>
+        <div class="hero-card reveal">
+          <div class="avatar">
+            <div class="inner">
+              <svg viewBox="0 0 128 128" width="90" height="90" fill="none" aria-hidden="true"><circle cx="64" cy="38" r="22" stroke="url(#g)" stroke-width="6"/><path d="M20 107c5-19 21-30 44-30s39 11 44 30" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="128" y2="128"><stop stop-color="#24d4ff"/><stop offset="1" stop-color="#8f4cff"/></linearGradient></defs></svg>
+              <h3 style="margin:.6rem 0 .2rem" id="avatarName"></h3>
+              <p style="margin:0;color:var(--muted)" id="avatarTitle"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container reveal">
+        <h2 class="title" id="aboutTitle"></h2>
+        <p class="subtitle" id="aboutSubtitle"></p>
+        <div class="grid about-grid">
+          <article class="about-card glass">
+            <h3 id="bioTitle"></h3>
+            <p id="bioText"></p>
+            <button class="btn secondary" onclick="window.print()" id="pdfBtn"></button>
+          </article>
+          <aside class="about-card glass">
+            <h3 id="highlightsTitle"></h3>
+            <ul class="list" id="specialtiesList"></ul>
+            <p style="margin:.8rem 0 0;color:var(--muted)"><span id="locationLabel"></span>: <b id="locationVal"></b></p>
+            <p style="margin:.35rem 0 0;color:var(--muted)">Email: <a id="emailVal" href="#"></a></p>
+            <p style="margin:.35rem 0 0;color:var(--muted)"><span id="phoneLabel"></span>: <a id="phoneVal" href="#"></a></p>
+            <p style="margin:.35rem 0 0;color:var(--muted)">LinkedIn: <a target="_blank" rel="noopener" id="linkedinVal" href="#">Profile</a></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container reveal">
+        <h2 class="title" id="servicesTitle"></h2>
+        <p class="subtitle" id="servicesSub"></p>
+        <div class="filters" id="serviceFilters"></div>
+        <div class="grid services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="container reveal">
+        <h2 class="title" id="coursesTitle"></h2>
+        <p class="subtitle" id="coursesSub"></p>
+        <small style="color:var(--muted)" id="securityNote"></small>
+        <div class="search-row">
+          <input class="input" id="courseSearch" placeholder="" />
+          <select id="courseLanguageFilter" style="max-width:220px">
+            <option value="all">All</option>
+            <option value="ar">Arabic</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="grid courses-grid" id="coursesGrid"></div>
+        <div class="admin-panel glass" id="adminPanel" hidden></div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container reveal">
+        <h2 class="title" id="insightsTitle"></h2>
+        <p class="subtitle" id="insightsSub"></p>
+        <div class="search-row">
+          <input class="input" id="postSearch" />
+          <select id="postCategory"></select>
+        </div>
+        <div class="grid posts-grid" id="postsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container reveal">
+        <h2 class="title" id="testimonialsTitle"></h2>
+        <div class="glass testimonial-wrap">
+          <div class="testimonial-track" id="testimonialTrack"></div>
+        </div>
+        <div style="display:flex;gap:.6rem;justify-content:center;margin-top:.9rem">
+          <button class="btn secondary" id="prevTestimonial">◀</button>
+          <button class="btn secondary" id="nextTestimonial">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container reveal">
+        <h2 class="title" id="faqTitle"></h2>
+        <div id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container reveal">
+        <h2 class="title" id="contactTitle"></h2>
+        <p class="subtitle" id="contactSub"></p>
+        <div class="grid contact-grid">
+          <form class="glass" style="padding:1rem" id="contactForm">
+            <div class="grid" style="grid-template-columns:1fr 1fr; gap:.65rem;">
+              <input class="input" name="name" id="nameField" required />
+              <input type="email" class="input" name="email" id="emailField" required />
+            </div>
+            <input class="input" style="margin-top:.65rem" name="phone" id="phoneField" />
+            <select class="input" style="margin-top:.65rem" id="serviceInterest"></select>
+            <textarea class="input" style="margin-top:.65rem;min-height:130px" name="message" id="messageField" required></textarea>
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.75rem">
+              <button class="btn primary" type="submit" id="sendBtn"></button>
+              <a class="btn secondary" id="mailFallback" href="#"></a>
+            </div>
+            <small style="color:var(--muted)" id="integrationNote"></small>
+          </form>
+          <aside class="glass" style="padding:1rem;">
+            <h3 id="contactDirectTitle"></h3>
+            <p><a id="contactEmailLink" href="#"></a></p>
+            <p><a id="contactPhoneLink" href="#"></a></p>
+            <p><a id="contactLinkedinLink" target="_blank" rel="noopener" href="#">LinkedIn</a></p>
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;">
+              <a class="btn secondary" id="contactWa" href="#">WhatsApp</a>
+              <a class="btn secondary" id="contactBook" href="#home"></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;">
+      <div>
+        <b id="footerBrand"></b>
+        <p id="footerText"></p>
+      </div>
+      <div>
+        <b id="quickLinksLabel"></b>
+        <div id="footerLinks"></div>
+      </div>
+      <div>
+        <b id="legalLabel"></b>
+        <p id="legalText"></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="courseModal" aria-hidden="true" role="dialog" aria-label="Course details modal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('courseModal')">✕</button>
+      <div id="courseModalContent"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="postModal" aria-hidden="true" role="dialog" aria-label="Post modal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('postModal')">✕</button>
+      <article id="postModalContent"></article>
+    </div>
+  </div>
+
+  <div class="modal" id="instaPayModal" aria-hidden="true" role="dialog" aria-label="InstaPay instructions">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('instaPayModal')">✕</button>
+      <div id="instaPayContent"></div>
+    </div>
+  </div>
+
+<script>
+let siteData = {
+  profile: {
+    name: 'Dr. Mohamed Elassy',
+    titleAr: 'مستشار ومدرب في التجارة الدولية والعمليات الجمركية',
+    titleEn: 'Consultant & Trainer in International Trade and Customs Operations',
+    bioAr: 'أقدّم حلولاً عملية للشركات ورواد الأعمال لتحسين الامتثال الجمركي، تسريع سلسلة الإمداد، وتحويل التعقيد في التجارة الدولية إلى نتائج قابلة للقياس.',
+    bioEn: 'I help businesses and founders improve customs compliance, streamline supply chains, and transform global trade complexity into measurable outcomes.',
+    location: 'Egypt',
+    email: 'contact@example.com',
+    phone: '+201020922835',
+    linkedIn: 'https://www.linkedin.com/in/dr-mohamed-elassy/?skipRedirect=true',
+    specialtiesAr: ['استشارات التجارة الدولية', 'التخليص الجمركي والامتثال', 'تدريب فرق التصدير والاستيراد', 'تصميم مسارات تشغيل لوجستية فعّالة'],
+    specialtiesEn: ['International trade consulting', 'Customs clearance & compliance', 'Import/export team training', 'Operational logistics design']
+  },
+  services: [
+    { id:'s1', cat:'consulting', icon:'🌍', titleAr:'استشارات التجارة الدولية وتمويل التجارة', titleEn:'International Business & Trade Finance Consulting', descAr:'خطط دخول الأسواق، إدارة المخاطر، وتسريع دورة المعاملات.', descEn:'Market-entry strategy, risk planning, and transaction-cycle optimization.', outAr:'نتيجة: قرارات أسرع ومخاطر أقل.', outEn:'Outcome: faster decisions and lower risk.'},
+    { id:'s2', cat:'customs', icon:'🧾', titleAr:'تخليص جمركي صادر ووارد', titleEn:'Customs Clearance: Import & Export', descAr:'متابعة الملفات والإجراءات لضمان مرور الشحنات بكفاءة.', descEn:'End-to-end customs file handling to keep shipments moving efficiently.', outAr:'نتيجة: تقليل التأخيرات والتكاليف.', outEn:'Outcome: reduced delays and costs.'},
+    { id:'s3', cat:'customs', icon:'⏱️', titleAr:'السماح المؤقت', titleEn:'Temporary Admission', descAr:'تجهيز وتنظيم ملفات السماح المؤقت وفق المتطلبات.', descEn:'Prepare and manage temporary admission files with full requirement alignment.', outAr:'نتيجة: امتثال واضح وتدفق تشغيلي أفضل.', outEn:'Outcome: clear compliance and better flow.'},
+    { id:'s4', cat:'customs', icon:'🏭', titleAr:'تسجيل المصانع الأجنبية', titleEn:'Foreign Factories Registration', descAr:'إرشاد عملي لتجهيز المتطلبات والمستندات اللازمة للتسجيل.', descEn:'Hands-on guidance for preparing documentation and registration requirements.', outAr:'نتيجة: جاهزية أسرع للدخول للسوق.', outEn:'Outcome: faster readiness for market access.'},
+    { id:'s5', cat:'consulting', icon:'📦', titleAr:'دعم الصادر', titleEn:'Export Support', descAr:'تحسين جاهزية التصدير من التخطيط حتى التسليم.', descEn:'End-to-end export readiness from planning to delivery.', outAr:'نتيجة: توسع منظم إلى أسواق جديدة.', outEn:'Outcome: structured expansion to new markets.'},
+    { id:'s6', cat:'logistics', icon:'🚚', titleAr:'النقل البري الدولي', titleEn:'International Land Freight', descAr:'تخطيط مسارات النقل البري مع تقليل الهدر الزمني.', descEn:'Cross-border land freight planning with time-loss minimization.', outAr:'نتيجة: تسليم أكثر انضباطاً.', outEn:'Outcome: more reliable delivery.'},
+    { id:'s7', cat:'logistics', icon:'🚢', titleAr:'النقل البحري الدولي', titleEn:'International Sea Freight', descAr:'اختيار الحلول البحرية المناسبة للشحنة والميزانية.', descEn:'Sea freight route and mode selection aligned to shipment profile and budget.', outAr:'نتيجة: موازنة أفضل بين الكلفة والزمن.', outEn:'Outcome: better cost-time balance.'}
+  ],
+  courses: [
+    {
+      id:'c1',
+      titleAr:'أساسيات التخليص الجمركي للمستوردين',
+      titleEn:'Customs Clearance Fundamentals for Importers',
+      descriptionAr:'برنامج عملي لتفكيك خطوات التخليص من المستندات حتى التسليم.',
+      descriptionEn:'A practical program covering clearance workflow from documents to release.',
+      language:'ar',
+      level:'beginner',
+      durationAr:'6 ساعات',
+      durationEn:'6 hours',
+      instructorAr:'د. محمد العيسي',
+      instructorEn:'Dr. Mohamed Elassy',
+      cover:'',
+      faqs:[
+        {qAr:'هل أحتاج خبرة مسبقة؟', qEn:'Do I need prior experience?', aAr:'لا، الدورة مناسبة للمبتدئين.', aEn:'No, this course is beginner-friendly.'}
+      ],
+      lessons:[
+        {titleAr:'مقدمة في دورة التخليص', titleEn:'Clearance lifecycle overview', type:'text', contentAr:'شرح مراحل التخليص الجمركي خطوة بخطوة.', contentEn:'A step-by-step explanation of the customs cycle.', resource:''},
+        {titleAr:'فيديو توضيحي', titleEn:'Explainer video', type:'video', videoUrl:'https://www.youtube.com/embed/dQw4w9WgXcQ', contentAr:'', contentEn:'', resource:''}
+      ],
+      payment: {
+        stripePaymentLink:'',
+        paypalCheckoutLink:'',
+        instapayEnabled:true,
+        instapayNumberOverride:'',
+        priceDisplayAr:'١٩٩٩ جنيه',
+        priceDisplayEn:'EGP 1999'
+      }
+    },
+    {
+      id:'c2',
+      titleAr:'إدارة عمليات التصدير باحتراف',
+      titleEn:'Professional Export Operations Management',
+      descriptionAr:'منهج تطبيقي لتجهيز وثائق التصدير واختيار حلول الشحن المناسبة.',
+      descriptionEn:'Applied training on export documentation and freight decisions.',
+      language:'en',
+      level:'intermediate',
+      durationAr:'8 ساعات',
+      durationEn:'8 hours',
+      instructorAr:'د. محمد العيسي',
+      instructorEn:'Dr. Mohamed Elassy',
+      cover:'',
+      faqs:[],
+      lessons:[
+        {titleAr:'خطة التصدير', titleEn:'Export planning framework', type:'text', contentAr:'أطر عملية لتقييم جاهزية التصدير.', contentEn:'A practical framework to assess export readiness.', resource:''}
+      ],
+      payment: {
+        stripePaymentLink:'https://buy.stripe.com/XXXX',
+        paypalCheckoutLink:'',
+        instapayEnabled:true,
+        instapayNumberOverride:'',
+        priceDisplayAr:'٢٤٩٩ جنيه',
+        priceDisplayEn:'EGP 2499'
+      }
+    }
+  ],
+  posts: [
+    {id:'p1', category:'customs', titleAr:'3 أخطاء تؤخر الإفراج الجمركي', titleEn:'3 Mistakes That Delay Customs Release', bodyAr:'تفادي الأخطاء المتكررة في المستندات والتصنيف يسهل مرور الشحنات.', bodyEn:'Avoiding recurring documentation and classification issues can speed up release.'},
+    {id:'p2', category:'logistics', titleAr:'كيف تختار بين الشحن البحري والبري؟', titleEn:'How to Choose Between Sea and Land Freight?', bodyAr:'القرار يعتمد على نوع البضائع، الوقت، والكلفة الكلية.', bodyEn:'Your decision should weigh cargo type, lead time, and total landed cost.'},
+    {id:'p3', category:'training', titleAr:'لماذا تدريب فرق التجارة مهم؟', titleEn:'Why Trade Team Training Matters', bodyAr:'التدريب المنهجي يقلل الأخطاء التشغيلية ويرفع كفاءة الأداء.', bodyEn:'Structured training reduces operational errors and improves performance.'}
+  ],
+  testimonials: [
+    {name:'A. Samir', ar:'إرشاد عملي ومباشر ساعدنا على تقليل التأخير في التخليص.', en:'Practical guidance that helped us reduce customs delays.'},
+    {name:'N. Kareem', ar:'الدورات واضحة ومبنية على تحديات واقعية.', en:'The courses are clear and built around real-world challenges.'},
+    {name:'M. Adel', ar:'تحسن أداء الفريق بعد تطبيق خطة التصدير.', en:'Team performance improved after implementing the export plan.'},
+    {name:'S. Nour', ar:'استشارات دقيقة وسريعة في الملفات المعقدة.', en:'Accurate and fast consulting for complex cases.'},
+    {name:'H. Youssef', ar:'تجربة ممتازة في تنظيم إجراءات السماح المؤقت.', en:'Excellent support in organizing temporary admission procedures.'},
+    {name:'R. Omar', ar:'تواصل احترافي ونتائج ملموسة.', en:'Professional communication and tangible outcomes.'}
+  ],
+  faq: [
+    {qAr:'ما الخدمات الأساسية التي تقدمونها؟', qEn:'What are your core services?', aAr:'الاستشارات والتدريب والتخليص الجمركي وحلول النقل الدولي.', aEn:'Consulting, training, customs clearance, and international freight solutions.'},
+    {qAr:'هل تدعمون ملف السماح المؤقت؟', qEn:'Do you support temporary admission files?', aAr:'نعم، مع متابعة شاملة للمتطلبات والإجراءات.', aEn:'Yes, with end-to-end support for required procedures.'},
+    {qAr:'كيف يمكن دفع رسوم الدورات؟', qEn:'How can I pay for courses?', aAr:'يمكنك الدفع عبر Stripe أو PayPal أو تحويل InstaPay.', aEn:'You can pay via Stripe, PayPal, or InstaPay transfer.'},
+    {qAr:'متى أحصل على الوصول بعد InstaPay؟', qEn:'When do I get access after InstaPay?', aAr:'بعد التحقق من إثبات الدفع، يتم تأكيد التسجيل.', aEn:'Enrollment is confirmed after proof-of-payment verification.'},
+    {qAr:'هل توجد أتمتة كاملة للوصول بعد الدفع؟', qEn:'Is fully automated post-payment access available?', aAr:'يتطلب ذلك مزود عضوية أو Backend إضافي.', aEn:'It requires a membership provider or additional backend automation.'}
+  ],
+  payments: {
+    instapay: {
+      enabled: true,
+      transferNumber: '01020922835',
+      displayNameAr: 'تحويل عبر إنستاباي',
+      displayNameEn: 'Pay via InstaPay',
+      proofWhatsApp: 'https://wa.me/201020922835',
+      proofEmail: 'contact@example.com'
+    }
+  },
+  integrations: {
+    emailjs: { enabled:false, serviceId:'', templateId:'', publicKey:'' },
+    formspree: { enabled:false, endpoint:'' },
+    membership: { provider:'none', memberstackKey:'', outsetaKey:'' }
+  }
+};
+
+try {
+  const storedSiteData = JSON.parse(localStorage.getItem('siteData') || 'null');
+  if (storedSiteData && typeof storedSiteData === 'object') {
+    siteData = { ...siteData, ...storedSiteData };
+  }
+} catch(e) {}
+
+const i18n = {
+  ar: {
+    nav:['الرئيسية','نبذة','الخدمات','الدورات','المقالات','آراء العملاء','الأسئلة','تواصل'],
+    navIds:['home','about','services','courses','insights','testimonials','faq','contact'],
+    book:'احجز استشارة', heroBadge:'حلول احترافية للتجارة الدولية', heroTitle:'حوّل تحديات التجارة الدولية إلى نمو حقيقي', heroSub:'استشارات وتدريب وتنفيذ عمليات جمركية ولوجستية بمنهج عملي يركز على النتائج.',
+    start:'ابدأ الآن', browse:'استعرض الدورات', stat1:'عميل وشركة تم دعمهم', stat2:'برنامج تدريبي تطبيقي', stat3:'% متوسط رضا العملاء',
+    aboutTitle:'نبذة احترافية', aboutSub:'محتوى تعريفي قابل للتحديث في ملف واحد مناسب للرفع المباشر على Hostinger.',
+    bio:'نبذة', highlights:'مجالات التميز', location:'الموقع', phone:'الهاتف', pdf:'تحميل الملف التعريفي (PDF)',
+    servicesTitle:'الخدمات', servicesSub:'خدمات استشارية وتشغيلية وتدريبية تدعم كفاءة التجارة الدولية.', request:'طلب الخدمة',
+    filters:{all:'الكل',consulting:'استشارات',training:'تدريب',customs:'جمارك',logistics:'لوجستيات'},
+    coursesTitle:'منصة التعلم', coursesSub:'دورات مهنية مع إدارة محلية للمحتوى، تتبّع تقدم، وخيارات دفع متعددة.',
+    security:'ملاحظة: هذا الموقع ثابت، ووضع الإدارة للسهولة فقط وليس بديلاً عن Backend آمن.',
+    searchCourse:'ابحث عن دورة...',
+    details:'التفاصيل', buy:'اشترِ الآن', continue:'متابعة التعلم', enrollContact:'تواصل للتسجيل',
+    insightsTitle:'المقالات والرؤى', insightsSub:'محتوى عملي يدعم قراراتك في التخليص، التصدير، وسلاسل الإمداد.',
+    searchPost:'ابحث في المقالات...', allCategories:'كل الفئات',
+    testimonials:'آراء العملاء', faq:'الأسئلة الشائعة',
+    contactTitle:'تواصل الآن', contactSub:'أرسل رسالتك أو تواصل مباشرة عبر البريد وواتساب.', send:'إرسال الرسالة',
+    mailto:'فتح البريد', integrate:'يمكنك تفعيل EmailJS أو Formspree من الإعدادات داخل الكود.', direct:'تواصل مباشر',
+    footerText:'استشارات وتدريب في التجارة الدولية والتخليص واللوجستيات.', quick:'روابط سريعة', legal:'ملاحظة قانونية', legalTxt:'المحتوى للتعريف المهني. شروط الخدمات والدفع يتم الاتفاق عليها قبل التنفيذ.',
+    paymentTabs:{stripe:'Stripe', paypal:'PayPal', instapay:'InstaPay'},
+    copy:'نسخ الرقم', proof:'إرسال إثبات الدفع', verifyNote:'خيار InstaPay هو تحويل بنكي يدوي، ويتم تفعيل الوصول بعد التحقق من إثبات الدفع.',
+    automateNote:'للأتمتة الكاملة بعد الدفع ستحتاج مزود عضوية أو Backend.',
+    adminTitle:'وضع الإدارة (محلي)', adminWarn:'تنبيه: كلمة المرور هنا للحماية البسيطة فقط وليست أماناً حقيقياً.',
+    addCourse:'إضافة دورة', export:'تصدير JSON', import:'استيراد JSON', save:'حفظ', delete:'حذف', lessons:'الدروس',
+    fields:{name:'الاسم',email:'البريد الإلكتروني',phone:'الهاتف',message:'رسالتك'}
+  },
+  en: {
+    nav:['Home','About','Services','Courses','Insights','Testimonials','FAQ','Contact'],
+    navIds:['home','about','services','courses','insights','testimonials','faq','contact'],
+    book:'Book a Consultation', heroBadge:'Professional Global Trade Solutions', heroTitle:'Turn Global Trade Challenges into Real Growth', heroSub:'Consulting, training, customs, and logistics execution with a results-driven approach.',
+    start:'Get Started', browse:'Browse Courses', stat1:'clients & businesses supported', stat2:'applied training programs', stat3:'% average client satisfaction',
+    aboutTitle:'Professional Profile', aboutSub:'Single-file editable profile designed for instant Hostinger deployment.',
+    bio:'Biography', highlights:'Key Specialties', location:'Location', phone:'Phone', pdf:'Download Profile (PDF)',
+    servicesTitle:'Services', servicesSub:'Consulting, operational, and training services for global trade performance.', request:'Request service',
+    filters:{all:'All',consulting:'Consulting',training:'Training',customs:'Customs',logistics:'Logistics'},
+    coursesTitle:'Learning Platform', coursesSub:'Professional course catalog with local management, progress tracking, and payment options.',
+    security:'Note: This website is static; admin mode is convenience only and not a secure backend.',
+    searchCourse:'Search courses...',
+    details:'Details', buy:'Buy Now', continue:'Continue Learning', enrollContact:'Contact to enroll',
+    insightsTitle:'Insights & Blog', insightsSub:'Practical thought leadership for customs, export, and logistics decisions.',
+    searchPost:'Search posts...', allCategories:'All categories',
+    testimonials:'Testimonials', faq:'Frequently Asked Questions',
+    contactTitle:'Get in Touch', contactSub:'Send a message or contact directly via email and WhatsApp.', send:'Send Message',
+    mailto:'Open Email', integrate:'You can enable EmailJS or Formspree directly in the code placeholders.', direct:'Direct contact',
+    footerText:'Consulting and training for international trade, customs, and logistics operations.', quick:'Quick links', legal:'Legal note', legalTxt:'Content is for professional profile purposes. Service and payment terms are agreed before execution.',
+    paymentTabs:{stripe:'Stripe', paypal:'PayPal', instapay:'InstaPay'},
+    copy:'Copy number', proof:'Send proof of payment', verifyNote:'InstaPay is a manual bank transfer method; enrollment is confirmed after proof-of-payment verification.',
+    automateNote:'To fully automate access after payment, a membership provider or backend is required.',
+    adminTitle:'Admin Mode (Local)', adminWarn:'Warning: password here is convenience only and not real security.',
+    addCourse:'Add course', export:'Export JSON', import:'Import JSON', save:'Save', delete:'Delete', lessons:'Lessons',
+    fields:{name:'Name',email:'Email',phone:'Phone',message:'Message'}
+  }
+};
+
+let currentLang = 'ar';
+let courses = JSON.parse(localStorage.getItem('coursesData') || 'null') || structuredClone(siteData.courses);
+siteData.courses = courses;
+let currentServiceFilter = 'all';
+let testimonialIndex = 0;
+
+const nav = document.getElementById('navLinks');
+const topNav = document.getElementById('topNav');
+const courseGrid = document.getElementById('coursesGrid');
+
+function applyLang(lang){
+  currentLang = lang;
+  const t = i18n[lang];
+  document.body.dataset.lang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  localStorage.setItem('langPref', lang);
+
+  document.title = lang === 'ar' ? 'د. محمد العيسي | استشارات التجارة الدولية والتدريب' : 'Dr. Mohamed Elassy | International Trade Consulting & Training';
+  document.querySelector('meta[name="description"]').content = lang === 'ar'
+    ? 'موقع د. محمد العيسي: استشارات التجارة الدولية، التخليص الجمركي، النقل الدولي، ومنصة دورات احترافية بخيارات دفع Stripe وPayPal وInstaPay.'
+    : 'Dr. Mohamed Elassy professional website: international trade consulting, customs services, logistics support, and premium learning platform.';
+  document.querySelector('meta[property="og:title"]').content = document.title;
+
+  nav.innerHTML = t.nav.map((item, i)=>`<a href="#${t.navIds[i]}">${item}</a>`).join('');
+  document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'AR';
+  document.getElementById('bookBtn').textContent = t.book;
+  document.getElementById('waBtn').href = siteData.payments.instapay.proofWhatsApp;
+  document.getElementById('heroBadge').textContent = t.heroBadge;
+  document.getElementById('heroTitle').textContent = t.heroTitle;
+  document.getElementById('heroSub').textContent = t.heroSub;
+  document.getElementById('heroCta1').textContent = t.start;
+  document.getElementById('heroCta2').textContent = t.browse;
+  document.getElementById('stat1').textContent = t.stat1;
+  document.getElementById('stat2').textContent = t.stat2;
+  document.getElementById('stat3').textContent = t.stat3;
+
+  document.getElementById('avatarName').textContent = siteData.profile.name;
+  document.getElementById('avatarTitle').textContent = lang === 'ar' ? siteData.profile.titleAr : siteData.profile.titleEn;
+
+  document.getElementById('aboutTitle').textContent = t.aboutTitle;
+  document.getElementById('aboutSubtitle').textContent = t.aboutSub;
+  document.getElementById('bioTitle').textContent = t.bio;
+  document.getElementById('bioText').textContent = lang === 'ar' ? siteData.profile.bioAr : siteData.profile.bioEn;
+  document.getElementById('pdfBtn').textContent = t.pdf;
+  document.getElementById('highlightsTitle').textContent = t.highlights;
+  document.getElementById('locationLabel').textContent = t.location;
+  document.getElementById('locationVal').textContent = siteData.profile.location;
+  document.getElementById('phoneLabel').textContent = t.phone;
+  document.getElementById('phoneVal').textContent = siteData.profile.phone;
+  document.getElementById('phoneVal').href = `tel:${siteData.profile.phone}`;
+  document.getElementById('emailVal').textContent = siteData.profile.email;
+  document.getElementById('emailVal').href = `mailto:${siteData.profile.email}`;
+  document.getElementById('linkedinVal').href = siteData.profile.linkedIn;
+  document.getElementById('specialtiesList').innerHTML = (lang==='ar'?siteData.profile.specialtiesAr:siteData.profile.specialtiesEn).map(s=>`<li>${s}</li>`).join('');
+
+  document.getElementById('servicesTitle').textContent = t.servicesTitle;
+  document.getElementById('servicesSub').textContent = t.servicesSub;
+
+  document.getElementById('coursesTitle').textContent = t.coursesTitle;
+  document.getElementById('coursesSub').textContent = t.coursesSub;
+  document.getElementById('securityNote').textContent = t.security;
+  document.getElementById('courseSearch').placeholder = t.searchCourse;
+
+  document.getElementById('insightsTitle').textContent = t.insightsTitle;
+  document.getElementById('insightsSub').textContent = t.insightsSub;
+  document.getElementById('postSearch').placeholder = t.searchPost;
+
+  document.getElementById('testimonialsTitle').textContent = t.testimonials;
+  document.getElementById('faqTitle').textContent = t.faq;
+
+  document.getElementById('contactTitle').textContent = t.contactTitle;
+  document.getElementById('contactSub').textContent = t.contactSub;
+  document.getElementById('nameField').placeholder = t.fields.name;
+  document.getElementById('emailField').placeholder = t.fields.email;
+  document.getElementById('phoneField').placeholder = t.fields.phone;
+  document.getElementById('messageField').placeholder = t.fields.message;
+  document.getElementById('sendBtn').textContent = t.send;
+  document.getElementById('mailFallback').textContent = t.mailto;
+  document.getElementById('mailFallback').href = `mailto:${siteData.profile.email}`;
+  document.getElementById('integrationNote').textContent = t.integrate;
+  document.getElementById('contactDirectTitle').textContent = t.direct;
+  document.getElementById('contactEmailLink').textContent = siteData.profile.email;
+  document.getElementById('contactEmailLink').href = `mailto:${siteData.profile.email}`;
+  document.getElementById('contactPhoneLink').textContent = siteData.profile.phone;
+  document.getElementById('contactPhoneLink').href = `tel:${siteData.profile.phone}`;
+  document.getElementById('contactLinkedinLink').href = siteData.profile.linkedIn;
+  document.getElementById('contactBook').textContent = t.book;
+  document.getElementById('contactWa').href = siteData.payments.instapay.proofWhatsApp;
+
+  document.getElementById('footerBrand').textContent = siteData.profile.name;
+  document.getElementById('footerText').textContent = t.footerText;
+  document.getElementById('quickLinksLabel').textContent = t.quick;
+  document.getElementById('legalLabel').textContent = t.legal;
+  document.getElementById('legalText').textContent = t.legalTxt;
+  document.getElementById('footerLinks').innerHTML = t.nav.map((n,i)=>`<div><a href="#${t.navIds[i]}">${n}</a></div>`).join('');
+
+  buildServiceFilters();
+  renderServices();
+  renderCourses();
+  renderPosts();
+  renderTestimonials();
+  renderFAQ();
+  renderContactSelect();
+  renderSchemas();
+}
+
+function buildServiceFilters(){
+  const t = i18n[currentLang].filters;
+  const order=['all','consulting','training','customs','logistics'];
+  const wrap = document.getElementById('serviceFilters');
+  wrap.innerHTML = order.map(k=>`<button class="chip ${currentServiceFilter===k?'active':''}" onclick="setServiceFilter('${k}')">${t[k]}</button>`).join('');
+}
+function setServiceFilter(f){ currentServiceFilter = f; buildServiceFilters(); renderServices(); }
+function renderServices(){
+  const t = i18n[currentLang];
+  const list = siteData.services.filter(s=>currentServiceFilter==='all'||s.cat===currentServiceFilter|| (currentServiceFilter==='training'&&s.cat==='consulting'));
+  document.getElementById('servicesGrid').innerHTML = list.map(s=>`
+    <article class="card glass">
+      <div class="icon">${s.icon}</div>
+      <h3>${currentLang==='ar'?s.titleAr:s.titleEn}</h3>
+      <p style="color:var(--muted)">${currentLang==='ar'?s.descAr:s.descEn}</p>
+      <small style="color:var(--gold)">${currentLang==='ar'?s.outAr:s.outEn}</small>
+      <div style="margin-top:.6rem"><a class="btn secondary" href="#contact">${t.request}</a></div>
+    </article>
+  `).join('');
+}
+
+function renderCourses(){
+  const q = document.getElementById('courseSearch').value.toLowerCase();
+  const langFilter = document.getElementById('courseLanguageFilter').value;
+  const t = i18n[currentLang];
+  const filtered = courses.filter(c=>{
+    const title = (currentLang==='ar'?c.titleAr:c.titleEn).toLowerCase();
+    return title.includes(q) && (langFilter==='all' || c.language===langFilter);
+  });
+  courseGrid.innerHTML = filtered.map(c=>`
+    <article class="card glass">
+      <div class="course-cover" style="background-image:${c.cover?`url('${c.cover}')`:'linear-gradient(135deg,#1f2f79,#7f24d8)'};background-size:cover;background-position:center;"></div>
+      <div style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.4rem"><span class="badge">${c.language.toUpperCase()}</span><span class="badge">${c.level}</span></div>
+      <h3>${currentLang==='ar'?c.titleAr:c.titleEn}</h3>
+      <p style="color:var(--muted)">${currentLang==='ar'?c.descriptionAr:c.descriptionEn}</p>
+      <p><b>${currentLang==='ar'?c.payment.priceDisplayAr:c.payment.priceDisplayEn}</b> • ${currentLang==='ar'?c.durationAr:c.durationEn}</p>
+      <div style="display:flex;gap:.45rem;flex-wrap:wrap">
+        <button class="btn secondary" onclick="openCourse('${c.id}')">${t.details}</button>
+      </div>
+      ${renderProgress(c.id)}
+    </article>
+  `).join('') || `<p>${t.enrollContact}</p>`;
+}
+function renderProgress(courseId){
+  const key = `progress_${courseId}`;
+  const progress = Number(localStorage.getItem(key) || 0);
+  return `<div style="margin-top:.55rem"><small style="color:var(--muted)">Progress: ${progress}%</small><div style="height:8px;border-radius:999px;background:#1a234e"><div style="height:100%;width:${progress}%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px"></div></div></div>`;
+}
+
+function openCourse(id){
+  const c = courses.find(x=>x.id===id); if(!c) return;
+  const t = i18n[currentLang];
+  const paymentTabs = [];
+  if(c.payment.stripePaymentLink) paymentTabs.push(['stripe', t.paymentTabs.stripe]);
+  if(c.payment.paypalCheckoutLink) paymentTabs.push(['paypal', t.paymentTabs.paypal]);
+  if((c.payment.instapayEnabled ?? true) && siteData.payments.instapay.enabled) paymentTabs.push(['instapay', t.paymentTabs.instapay]);
+  const hasBuy = paymentTabs.length>0;
+  document.getElementById('courseModalContent').innerHTML = `
+    <h2>${currentLang==='ar'?c.titleAr:c.titleEn}</h2>
+    <p style="color:var(--muted)">${currentLang==='ar'?c.descriptionAr:c.descriptionEn}</p>
+    <p><b>${currentLang==='ar'?c.payment.priceDisplayAr:c.payment.priceDisplayEn}</b></p>
+    <p>${currentLang==='ar'?'المدرب':'Instructor'}: ${currentLang==='ar'?c.instructorAr:c.instructorEn}</p>
+    <h3>${currentLang==='ar'?'المحتوى':'Syllabus'}</h3>
+    ${c.lessons.map((l,i)=>`<div class="lesson-item"><b>${i+1}. ${currentLang==='ar'?l.titleAr:l.titleEn}</b><div style="font-size:.9rem;color:var(--muted)">${l.type}</div></div>`).join('')}
+    <div class="seg">${paymentTabs.map((p,i)=>`<button class="${i===0?'active':''}" onclick="selectPayTab('${id}','${p[0]}',this)">${p[1]}</button>`).join('')}</div>
+    <div id="payPanel"></div>
+    <h3>${i18n[currentLang].faq}</h3>
+    ${(c.faqs||[]).map(f=>`<p><b>${currentLang==='ar'?f.qAr:f.qEn}</b><br>${currentLang==='ar'?f.aAr:f.aEn}</p>`).join('') || '<p>-</p>'}
+    <hr style="border-color:var(--line)">
+    <div id="lessonPlayer"></div>
+  `;
+  if(paymentTabs.length) selectPayTab(id,paymentTabs[0][0]);
+  renderLessonPlayer(c,0);
+  openModal('courseModal');
+}
+function renderLessonPlayer(course, idx){
+  const lesson = course.lessons[idx]; if(!lesson) return;
+  const t = i18n[currentLang];
+  let content = `<h3>${t.continue}</h3><h4>${currentLang==='ar'?lesson.titleAr:lesson.titleEn}</h4>`;
+  if(lesson.type==='video' && lesson.videoUrl) content += `<div style="position:relative;padding-top:56.25%"><iframe src="${lesson.videoUrl}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px" allowfullscreen></iframe></div>`;
+  if(lesson.type==='text' || lesson.contentAr || lesson.contentEn) content += `<p style="color:var(--muted)">${currentLang==='ar'?(lesson.contentAr||''): (lesson.contentEn||'')}</p>`;
+  if(lesson.type==='image' && lesson.resource) content += `<img src="${lesson.resource}" alt="lesson image">`;
+  if(lesson.resource) content += `<p><a class="btn secondary" target="_blank" href="${lesson.resource}">${currentLang==='ar'?'تحميل/فتح المورد':'Open resource'}</a></p>`;
+  content += `<button class="btn primary" onclick="markProgress('${course.id}', ${Math.round(((idx+1)/course.lessons.length)*100)})">${currentLang==='ar'?'تحديث التقدم':'Update progress'}</button>`;
+  document.getElementById('lessonPlayer').innerHTML = content;
+}
+function markProgress(courseId,p){ localStorage.setItem(`progress_${courseId}`, p); renderCourses(); }
+
+function selectPayTab(courseId, tab, btn){
+  if(btn){ [...btn.parentElement.children].forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+  const course = courses.find(c=>c.id===courseId); if(!course) return;
+  const panel = document.getElementById('payPanel');
+  const t = i18n[currentLang];
+  if(tab==='stripe') panel.innerHTML = `<a class="btn primary" target="_blank" href="${course.payment.stripePaymentLink}">${t.buy} • Stripe</a>`;
+  if(tab==='paypal') panel.innerHTML = `<a class="btn primary" target="_blank" href="${course.payment.paypalCheckoutLink}">${t.buy} • PayPal</a>`;
+  if(tab==='instapay') {
+    const number = course.payment.instapayNumberOverride || siteData.payments.instapay.transferNumber;
+    panel.innerHTML = `
+      <div class="glass" style="padding:.8rem;margin-top:.6rem;">
+        <p><b>InstaPay:</b> <span id="instaNum">${number}</span></p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button class="btn secondary" onclick="copyInstaNumber('${number}')">${t.copy}</button>
+          <button class="btn primary" onclick="openInstaInstructions('${number}')">${t.buy}</button>
+        </div>
+        <small style="color:var(--muted)">${t.verifyNote}<br>${t.automateNote}</small>
+      </div>
+    `;
+  }
+}
+function openInstaInstructions(number){
+  const t = i18n[currentLang];
+  document.getElementById('instaPayContent').innerHTML = `
+    <h3>InstaPay</h3>
+    <p>${currentLang==='ar'?'رقم التحويل':'Transfer number'}: <b id="instaModalNum">${number}</b></p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn secondary" onclick="copyInstaNumber('${number}')">${t.copy}</button>
+      <a class="btn primary" target="_blank" href="${siteData.payments.instapay.proofWhatsApp}">${t.proof} WhatsApp</a>
+      <a class="btn secondary" href="mailto:${siteData.payments.instapay.proofEmail}?subject=Payment%20Proof">${t.proof} Email</a>
+    </div>
+    <div id="qrWrap" style="margin-top:1rem"></div>
+    <small style="color:var(--muted)">${t.verifyNote}</small>
+  `;
+  openModal('instaPayModal');
+  setTimeout(()=>{
+    const qrWrap = document.getElementById('qrWrap');
+    try {
+      if(window.QRCode){
+        qrWrap.innerHTML = '';
+        new QRCode(qrWrap, {text:`InstaPay Transfer: ${number}`, width:130, height:130});
+        qrWrap.insertAdjacentHTML('beforeend', `<p style="color:var(--muted)">${currentLang==='ar'?'رمز QR نصي غير رسمي':'Text QR only; not an official InstaPay QR standard.'}</p>`);
+      } else {
+        qrWrap.innerHTML = `<p style="color:var(--muted)">${currentLang==='ar'?'تعذر تحميل مكتبة QR، استخدم الرقم والنسخ.':'QR library not available; use number copy instead.'}</p>`;
+      }
+    } catch(e){
+      qrWrap.innerHTML = `<p style="color:var(--muted)">${currentLang==='ar'?'تعذر إنشاء QR':'Could not generate QR'}</p>`;
+    }
+  },150);
+}
+function copyInstaNumber(number){ navigator.clipboard?.writeText(number); }
+
+function renderPosts(){
+  const q = document.getElementById('postSearch').value.toLowerCase();
+  const cat = document.getElementById('postCategory').value || 'all';
+  const t = i18n[currentLang];
+  const categories = [...new Set(siteData.posts.map(p=>p.category))];
+  document.getElementById('postCategory').innerHTML = `<option value="all">${t.allCategories}</option>` + categories.map(c=>`<option value="${c}">${c}</option>`).join('');
+  document.getElementById('postCategory').value = cat;
+  const filtered = siteData.posts.filter(p=>{
+    const title = (currentLang==='ar'?p.titleAr:p.titleEn).toLowerCase();
+    return title.includes(q) && (cat==='all' || p.category===cat);
+  });
+  document.getElementById('postsGrid').innerHTML = filtered.map(p=>`<article class="card glass"><span class="badge">${p.category}</span><h3>${currentLang==='ar'?p.titleAr:p.titleEn}</h3><p style="color:var(--muted)">${(currentLang==='ar'?p.bodyAr:p.bodyEn).slice(0,90)}...</p><button class="btn secondary" onclick="openPost('${p.id}')">${i18n[currentLang].details}</button></article>`).join('');
+}
+function openPost(id){
+  const p = siteData.posts.find(x=>x.id===id); if(!p) return;
+  document.getElementById('postModalContent').innerHTML = `<h2>${currentLang==='ar'?p.titleAr:p.titleEn}</h2><p>${currentLang==='ar'?p.bodyAr:p.bodyEn}</p>`;
+  openModal('postModal');
+}
+
+function renderTestimonials(){
+  const track = document.getElementById('testimonialTrack');
+  track.innerHTML = siteData.testimonials.map(t=>`<div class="testimonial"><p style="font-size:1.08rem">“${currentLang==='ar'?t.ar:t.en}”</p><small style="color:var(--gold)">— ${t.name}</small></div>`).join('');
+  updateTestimonials();
+}
+function updateTestimonials(){
+  const track = document.getElementById('testimonialTrack');
+  track.style.transform = `translateX(${document.documentElement.dir==='rtl' ? testimonialIndex*100 : -testimonialIndex*100}%)`;
+}
+
+function renderFAQ(){
+  const wrap = document.getElementById('faqList');
+  wrap.innerHTML = siteData.faq.map((f,i)=>`
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(${i},this)">${currentLang==='ar'?f.qAr:f.qEn}</button>
+      <div class="faq-a" id="faqA${i}"><p>${currentLang==='ar'?f.aAr:f.aEn}</p></div>
+    </div>
+  `).join('');
+}
+function toggleFaq(i,btn){
+  const a = document.getElementById(`faqA${i}`);
+  const open = a.style.maxHeight && a.style.maxHeight !== '0px';
+  a.style.maxHeight = open ? '0px' : a.scrollHeight + 'px';
+  btn.setAttribute('aria-expanded', String(!open));
+}
+
+function renderContactSelect(){
+  const sel = document.getElementById('serviceInterest');
+  sel.innerHTML = siteData.services.map(s=>`<option>${currentLang==='ar'?s.titleAr:s.titleEn}</option>`).join('');
+}
+
+function openModal(id){ const m = document.getElementById(id); m.classList.add('open'); m.setAttribute('aria-hidden','false'); }
+function closeModal(id){ const m = document.getElementById(id); m.classList.remove('open'); m.setAttribute('aria-hidden','true'); }
+
+function initAdmin(){
+  const params = new URLSearchParams(location.search);
+  if(params.get('admin') !== '1') return;
+  const input = prompt('Admin password (convenience only):');
+  if(input !== 'elassy123') return;
+  const p = document.getElementById('adminPanel');
+  p.hidden = false;
+  renderAdminDashboard();
+}
+
+function renderAdminDashboard(){
+  const t = i18n[currentLang];
+  const p = document.getElementById('adminPanel');
+  if(!p) return;
+  p.innerHTML = `
+    <h3>${t.adminTitle} - Dashboard</h3>
+    <small style="color:var(--danger)">${t.adminWarn}</small>
+
+    <details open style="margin-top:.7rem">
+      <summary><b>Profile / البروفايل</b></summary>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.7rem">
+        <input class="input" id="admName" placeholder="Name" value="${siteData.profile.name||''}" />
+        <input class="input" id="admLocation" placeholder="Location" value="${siteData.profile.location||''}" />
+        <input class="input" id="admEmail" placeholder="Email" value="${siteData.profile.email||''}" />
+        <input class="input" id="admPhone" placeholder="Phone" value="${siteData.profile.phone||''}" />
+        <input class="input" id="admLinkedin" placeholder="LinkedIn" value="${siteData.profile.linkedIn||''}" style="grid-column:1/-1" />
+        <textarea class="input" id="admBioAr" placeholder="Bio AR" style="grid-column:1/-1">${siteData.profile.bioAr||''}</textarea>
+        <textarea class="input" id="admBioEn" placeholder="Bio EN" style="grid-column:1/-1">${siteData.profile.bioEn||''}</textarea>
+      </div>
+      <button class="btn primary" style="margin-top:.7rem" onclick="adminSaveProfile()">${t.save}</button>
+    </details>
+
+    <details style="margin-top:.7rem">
+      <summary><b>Services / الخدمات</b></summary>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.7rem">
+        <input class="input" id="admServiceTitleAr" placeholder="Service title AR" />
+        <input class="input" id="admServiceTitleEn" placeholder="Service title EN" />
+        <input class="input" id="admServiceDescAr" placeholder="Service desc AR" />
+        <input class="input" id="admServiceDescEn" placeholder="Service desc EN" />
+        <select id="admServiceCat" class="input">
+          <option value="consulting">consulting</option>
+          <option value="training">training</option>
+          <option value="customs">customs</option>
+          <option value="logistics">logistics</option>
+        </select>
+        <input class="input" id="admServiceIcon" placeholder="Icon e.g. 🚚" />
+      </div>
+      <button class="btn primary" style="margin-top:.7rem" onclick="adminAddService()">Add service</button>
+      <div id="adminServiceList" style="margin-top:.8rem"></div>
+    </details>
+
+    <details style="margin-top:.7rem">
+      <summary><b>Courses / الدورات</b></summary>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.7rem">
+        <input class="input" id="admTitleAr" placeholder="title_ar" />
+        <input class="input" id="admTitleEn" placeholder="title_en" />
+        <input class="input" id="admDescAr" placeholder="desc_ar" />
+        <input class="input" id="admDescEn" placeholder="desc_en" />
+        <input class="input" id="admPriceAr" placeholder="price ar" />
+        <input class="input" id="admPriceEn" placeholder="price en" />
+        <select id="admLang" class="input"><option value="ar">AR</option><option value="en">EN</option></select>
+      </div>
+      <button class="btn primary" style="margin-top:.7rem" onclick="adminAddCourse()">${t.addCourse}</button>
+      <div id="adminCourseList" style="margin-top:.8rem"></div>
+    </details>
+
+    <details style="margin-top:.7rem">
+      <summary><b>Blog / المقالات</b></summary>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.7rem">
+        <input class="input" id="admPostTitleAr" placeholder="Post title AR" />
+        <input class="input" id="admPostTitleEn" placeholder="Post title EN" />
+        <input class="input" id="admPostCat" placeholder="Category" value="customs" />
+        <div></div>
+        <textarea class="input" id="admPostBodyAr" placeholder="Post body AR" style="grid-column:1/-1"></textarea>
+        <textarea class="input" id="admPostBodyEn" placeholder="Post body EN" style="grid-column:1/-1"></textarea>
+      </div>
+      <button class="btn primary" style="margin-top:.7rem" onclick="adminAddPost()">Add post</button>
+      <div id="adminPostList" style="margin-top:.8rem"></div>
+    </details>
+
+    <details style="margin-top:.7rem">
+      <summary><b>Payments / الدفع</b></summary>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.7rem">
+        <label><input type="checkbox" id="admInstaEnabled" ${siteData.payments.instapay.enabled ? 'checked' : ''}> InstaPay Enabled</label>
+        <input class="input" id="admInstaNumber" placeholder="InstaPay Number" value="${siteData.payments.instapay.transferNumber||''}" />
+        <input class="input" id="admInstaWa" placeholder="WhatsApp proof link" value="${siteData.payments.instapay.proofWhatsApp||''}" />
+        <input class="input" id="admInstaEmail" placeholder="Proof email" value="${siteData.payments.instapay.proofEmail||''}" />
+      </div>
+      <button class="btn primary" style="margin-top:.7rem" onclick="adminSavePayments()">${t.save}</button>
+    </details>
+
+    <div style="margin-top:.8rem;display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn secondary" onclick="exportSiteData()">Export Full JSON</button>
+      <label class="btn secondary">Import Full JSON<input type="file" accept="application/json" onchange="importSiteData(event)" hidden></label>
+      <button class="btn secondary" onclick="exportCourses()">${t.export} Courses</button>
+      <label class="btn secondary">${t.import} Courses<input type="file" accept="application/json" onchange="importCourses(event)" hidden></label>
+    </div>
+  `;
+  renderAdminServiceList();
+  renderAdminCourseList();
+  renderAdminPostList();
+}
+
+function adminSaveProfile(){
+  siteData.profile.name = document.getElementById('admName').value || siteData.profile.name;
+  siteData.profile.location = document.getElementById('admLocation').value;
+  siteData.profile.email = document.getElementById('admEmail').value;
+  siteData.profile.phone = document.getElementById('admPhone').value;
+  siteData.profile.linkedIn = document.getElementById('admLinkedin').value;
+  siteData.profile.bioAr = document.getElementById('admBioAr').value;
+  siteData.profile.bioEn = document.getElementById('admBioEn').value;
+  persistSiteData();
+}
+
+function adminAddService(){
+  siteData.services.push({
+    id:'s'+Date.now(),
+    cat: document.getElementById('admServiceCat').value,
+    icon: document.getElementById('admServiceIcon').value || '⭐',
+    titleAr: document.getElementById('admServiceTitleAr').value || 'خدمة جديدة',
+    titleEn: document.getElementById('admServiceTitleEn').value || 'New Service',
+    descAr: document.getElementById('admServiceDescAr').value || '',
+    descEn: document.getElementById('admServiceDescEn').value || '',
+    outAr:'نتيجة: قيمة عملية.',
+    outEn:'Outcome: practical value.'
+  });
+  persistSiteData();
+}
+
+function renderAdminServiceList(){
+  const wrap = document.getElementById('adminServiceList');
+  if(!wrap) return;
+  wrap.innerHTML = siteData.services.map((s,idx)=>`
+    <div class="card" style="margin-bottom:.4rem">
+      <b>${s.titleAr} / ${s.titleEn}</b>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.35rem">
+        <input class="input" value="${s.titleAr||''}" onchange="siteData.services[${idx}].titleAr=this.value;persistSiteData(false)">
+        <input class="input" value="${s.titleEn||''}" onchange="siteData.services[${idx}].titleEn=this.value;persistSiteData(false)">
+        <button class="btn" style="background:var(--danger)" onclick="siteData.services.splice(${idx},1);persistSiteData()">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function adminAddCourse(){
+  const id = 'c'+Date.now();
+  courses.push({
+    id,
+    titleAr: document.getElementById('admTitleAr').value || 'دورة جديدة',
+    titleEn: document.getElementById('admTitleEn').value || 'New course',
+    descriptionAr: document.getElementById('admDescAr').value || '',
+    descriptionEn: document.getElementById('admDescEn').value || '',
+    language: document.getElementById('admLang').value,
+    level:'beginner', durationAr:'4 ساعات', durationEn:'4 hours', instructorAr:'د. محمد العيسي', instructorEn:'Dr. Mohamed Elassy', cover:'',
+    faqs:[], lessons:[],
+    payment:{ stripePaymentLink:'', paypalCheckoutLink:'', instapayEnabled:true, instapayNumberOverride:'', priceDisplayAr:document.getElementById('admPriceAr').value||'--', priceDisplayEn:document.getElementById('admPriceEn').value||'--' }
+  });
+  persistCourses();
+}
+
+function renderAdminCourseList(){
+  const wrap = document.getElementById('adminCourseList');
+  if(!wrap) return;
+  wrap.innerHTML = courses.map((c,idx)=>`
+    <details style="margin-bottom:.5rem"><summary>${c.titleAr} / ${c.titleEn}</summary>
+      <div style="margin-top:.5rem" class="grid">
+        <input class="input" value="${c.titleAr||''}" onchange="courses[${idx}].titleAr=this.value;persistCourses(false)" placeholder="Title AR" />
+        <input class="input" value="${c.titleEn||''}" onchange="courses[${idx}].titleEn=this.value;persistCourses(false)" placeholder="Title EN" />
+        <input class="input" value="${c.descriptionAr||''}" onchange="courses[${idx}].descriptionAr=this.value;persistCourses(false)" placeholder="Desc AR" />
+        <input class="input" value="${c.descriptionEn||''}" onchange="courses[${idx}].descriptionEn=this.value;persistCourses(false)" placeholder="Desc EN" />
+        <input class="input" value="${c.payment.stripePaymentLink||''}" onchange="courses[${idx}].payment.stripePaymentLink=this.value;persistCourses(false)" placeholder="Stripe link" />
+        <input class="input" value="${c.payment.paypalCheckoutLink||''}" onchange="courses[${idx}].payment.paypalCheckoutLink=this.value;persistCourses(false)" placeholder="PayPal link" />
+        <label><input type="checkbox" ${c.payment.instapayEnabled!==false?'checked':''} onchange="courses[${idx}].payment.instapayEnabled=this.checked;persistCourses(false)"> InstaPay enabled</label>
+        <button class="btn secondary" onclick="courses[${idx}].lessons.push({titleAr:'درس',titleEn:'Lesson',type:'text',contentAr:'',contentEn:'',resource:''});persistCourses()">+ ${i18n[currentLang].lessons}</button>
+        <div id="lessons_${c.id}">${c.lessons.map((l,i)=>`<div class='lesson-item' data-idx='${i}'>${i+1}. ${l.titleAr} / ${l.titleEn}</div>`).join('')}</div>
+        <button class="btn" style="background:var(--danger)" onclick="courses.splice(${idx},1);persistCourses()">${i18n[currentLang].delete}</button>
+      </div>
+    </details>
+  `).join('');
+  courses.forEach(c=>{
+    const el = document.getElementById(`lessons_${c.id}`);
+    if(el && window.Sortable){
+      Sortable.create(el,{animation:150,onEnd:()=>{
+        const newOrder=[...el.children].map(ch=>Number(ch.dataset.idx));
+        c.lessons = newOrder.map(i=>c.lessons[i]);
+        persistCourses();
+      }});
+    }
+  });
+}
+
+function adminAddPost(){
+  siteData.posts.push({
+    id:'p'+Date.now(),
+    category: document.getElementById('admPostCat').value || 'general',
+    titleAr: document.getElementById('admPostTitleAr').value || 'مقال جديد',
+    titleEn: document.getElementById('admPostTitleEn').value || 'New Post',
+    bodyAr: document.getElementById('admPostBodyAr').value || '',
+    bodyEn: document.getElementById('admPostBodyEn').value || ''
+  });
+  persistSiteData();
+}
+
+function renderAdminPostList(){
+  const wrap = document.getElementById('adminPostList');
+  if(!wrap) return;
+  wrap.innerHTML = siteData.posts.map((post,idx)=>`
+    <div class="card" style="margin-bottom:.4rem">
+      <b>${post.titleAr} / ${post.titleEn}</b>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.35rem">
+        <input class="input" value="${post.titleAr||''}" onchange="siteData.posts[${idx}].titleAr=this.value;persistSiteData(false)">
+        <input class="input" value="${post.titleEn||''}" onchange="siteData.posts[${idx}].titleEn=this.value;persistSiteData(false)">
+        <button class="btn" style="background:var(--danger)" onclick="siteData.posts.splice(${idx},1);persistSiteData()">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function adminSavePayments(){
+  siteData.payments.instapay.enabled = document.getElementById('admInstaEnabled').checked;
+  siteData.payments.instapay.transferNumber = document.getElementById('admInstaNumber').value;
+  siteData.payments.instapay.proofWhatsApp = document.getElementById('admInstaWa').value;
+  siteData.payments.instapay.proofEmail = document.getElementById('admInstaEmail').value;
+  persistSiteData();
+}
+
+function persistCourses(render=true){
+  siteData.courses = courses;
+  localStorage.setItem('coursesData', JSON.stringify(courses));
+  localStorage.setItem('siteData', JSON.stringify(siteData));
+  if(render){
+    renderCourses();
+    renderAdminCourseList();
+    renderSchemas();
+  }
+}
+
+function persistSiteData(render=true){
+  siteData.courses = courses;
+  localStorage.setItem('siteData', JSON.stringify(siteData));
+  localStorage.setItem('coursesData', JSON.stringify(courses));
+  if(render){
+    applyLang(currentLang);
+    renderAdminDashboard();
+  }
+}
+
+function exportSiteData(){
+  siteData.courses = courses;
+  const blob = new Blob([JSON.stringify(siteData,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'siteData-export.json';
+  a.click();
+}
+
+function importSiteData(e){
+  const file = e.target.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = ()=>{
+    try {
+      const incoming = JSON.parse(r.result);
+      if(incoming && typeof incoming === 'object'){
+        siteData = { ...siteData, ...incoming };
+        courses = Array.isArray(siteData.courses) ? siteData.courses : courses;
+        persistSiteData();
+      }
+    } catch(_){}
+  };
+  r.readAsText(file);
+}
+
+function exportCourses(){
+  const blob = new Blob([JSON.stringify(courses,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'courses-export.json';
+  a.click();
+}
+
+function importCourses(e){
+  const file = e.target.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = ()=>{ try { courses = JSON.parse(r.result); persistCourses(); } catch(_){} };
+  r.readAsText(file);
+}
+
+
+function setupReveal(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = document.querySelectorAll('.reveal');
+  if(reduced){ items.forEach(i=>i.classList.add('show')); return; }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+  }, {threshold:.15});
+  items.forEach(i=>io.observe(i));
+}
+function setupCounters(){
+  const nums = document.querySelectorAll('[data-counter]');
+  nums.forEach(el=>{
+    const target = Number(el.dataset.counter); let n=0;
+    const step = Math.max(1,Math.round(target/30));
+    const iv = setInterval(()=>{ n+=step; el.textContent = n>=target ? target : n; if(n>=target) clearInterval(iv); },40);
+  });
+}
+
+function renderSchemas(){
+  document.querySelectorAll('script[data-schema]').forEach(s=>s.remove());
+  const person = {
+    '@context':'https://schema.org','@type':'Person',name:siteData.profile.name,
+    jobTitle: currentLang==='ar'?siteData.profile.titleAr:siteData.profile.titleEn,
+    email:siteData.profile.email, telephone:siteData.profile.phone, sameAs:[siteData.profile.linkedIn]
+  };
+  const offerCatalog = {
+    '@context':'https://schema.org','@type':'OfferCatalog',name:'Services',itemListElement:siteData.services.map(s=>({ '@type':'Offer', itemOffered:{'@type':'Service',name:currentLang==='ar'?s.titleAr:s.titleEn,description:currentLang==='ar'?s.descAr:s.descEn }}))
+  };
+  const courseSchemas = courses.map(c=>({ '@context':'https://schema.org','@type':'Course',name:currentLang==='ar'?c.titleAr:c.titleEn,description:currentLang==='ar'?c.descriptionAr:c.descriptionEn,provider:{'@type':'Person',name:siteData.profile.name}}));
+  [person,offerCatalog,...courseSchemas].forEach(obj=>{
+    const s = document.createElement('script'); s.type='application/ld+json'; s.dataset.schema='1'; s.textContent = JSON.stringify(obj); document.head.appendChild(s);
+  });
+}
+
+document.getElementById('langToggle').addEventListener('click', ()=>applyLang(currentLang==='ar'?'en':'ar'));
+document.getElementById('accentSwitch').addEventListener('change', e=>{ document.body.dataset.accent = e.target.value; localStorage.setItem('accent',e.target.value); });
+document.getElementById('courseSearch').addEventListener('input', renderCourses);
+document.getElementById('courseLanguageFilter').addEventListener('change', renderCourses);
+document.getElementById('postSearch').addEventListener('input', renderPosts);
+document.getElementById('postCategory').addEventListener('change', renderPosts);
+document.getElementById('prevTestimonial').addEventListener('click', ()=>{ testimonialIndex = (testimonialIndex-1+siteData.testimonials.length)%siteData.testimonials.length; updateTestimonials();});
+document.getElementById('nextTestimonial').addEventListener('click', ()=>{ testimonialIndex = (testimonialIndex+1)%siteData.testimonials.length; updateTestimonials();});
+document.getElementById('contactForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const form = e.currentTarget;
+  const payload = Object.fromEntries(new FormData(form));
+  if(siteData.integrations.formspree.enabled && siteData.integrations.formspree.endpoint){
+    fetch(siteData.integrations.formspree.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(()=>{});
+  }
+  window.location.href = `mailto:${siteData.profile.email}?subject=Consultation%20Request&body=${encodeURIComponent(payload.message||'')}`;
+});
+window.addEventListener('scroll', ()=>topNav.classList.toggle('scrolled', window.scrollY>24));
+window.addEventListener('keydown', e=>{ if(e.key==='Escape'){ ['courseModal','postModal','instaPayModal'].forEach(closeModal);} });
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const storedAccent = localStorage.getItem('accent') || 'blue';
+  document.body.dataset.accent = storedAccent;
+  document.getElementById('accentSwitch').value = storedAccent;
+  const browser = navigator.language?.startsWith('ar') ? 'ar' : 'en';
+  applyLang(localStorage.getItem('langPref') || browser || 'ar');
+  initAdmin();
+  setupReveal();
+  setupCounters();
+});
+</script>
+</body>
+</html>
+<!-- Hostinger Setup Notes:
+[ ] Upload this single file as /public_html/index.html in Hostinger File Manager.
+[ ] Edit profile/services text inside siteData.profile and siteData.services in this file.
+[ ] Manage courses via URL ?admin=1 (password default: elassy123), then Export JSON for backup.
+[ ] Set per-course Stripe/PayPal URLs in admin mode (or directly in siteData.courses[].payment).
+[ ] InstaPay number is siteData.payments.instapay.transferNumber = 01020922835; configure proof WhatsApp/email links there.
+[ ] Optional membership placeholders are in siteData.integrations.membership (keys empty by default).
+-->
